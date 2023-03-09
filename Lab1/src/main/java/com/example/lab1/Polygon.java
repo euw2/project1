@@ -4,8 +4,10 @@ import java.util.Locale;
 
 public class Polygon {
     private Point [] points;
-    Polygon(int nump){
+    private Style style;
+    Polygon(int nump, Style style){
         points=new Point [nump];
+        this.style = style;
     };
     public void setP(int i,Point nw){
     points[i]=nw;
@@ -19,6 +21,6 @@ public class Polygon {
         for(Point p: points){
             s+=p.x+","+p.y+" ";
         }
-        return String.format(Locale.ENGLISH,"<polygon points=\"%s\" />",s);
+        return String.format(Locale.ENGLISH,"<polygon points=\"%s\" style=\"%s\"/>",s, s.style.toSvg());
     }
 }
